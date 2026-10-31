@@ -37,7 +37,7 @@ print("Hello, Softex!")   # print() = স্ক্রিনে কিছু দ�
 ### ৩. Variable — নাম দেওয়া বাক্স
 
 ```python
-name = "Rafsun"      # str  (লেখা)
+name = "Suaib"      # str  (লেখা)
 age = 25             # int  (পূর্ণসংখ্যা)
 height = 5.8         # float (দশমিক)
 is_student = False   # bool (সত্য/মিথ্যা)

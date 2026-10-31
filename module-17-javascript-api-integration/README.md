@@ -36,7 +36,7 @@ sequenceDiagram
 ### Variable ও Type
 
 ```javascript
-const name = "Rafsun";      // const — পুনরায় বসানো যাবে না (ডিফল্ট পছন্দ)
+const name = "Suaib";      // const — পুনরায় বসানো যাবে না (ডিফল্ট পছন্দ)
 let count = 0;              // let — বদলাবে
 // var — ব্যবহার করবে না (scope ঝামেলা)
 

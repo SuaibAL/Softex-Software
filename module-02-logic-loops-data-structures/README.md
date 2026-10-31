@@ -111,9 +111,9 @@ for key, value in expense.items():
 
 ```python
 data = {
-    "rafsun": {"city": "Dhaka", "skills": ["python", "php"]},
+    "suaib": {"city": "Dhaka", "skills": ["python", "php"]},
 }
-print(data["rafsun"]["skills"][0])   # python
+print(data["suaib"]["skills"][0])   # python
 ```
 
 ### Function — একবার লেখো, বারবার ডাকো

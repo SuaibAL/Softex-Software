@@ -3,7 +3,7 @@
 > **সময়সীমা:** ১ নভেম্বর ২০২৬ (রবিবার) → ২০ ডিসেম্বর ২০২৬ (রবিবার), মোট **৫০ দিন**
 > **প্রতিদিন:** ৪ ঘণ্টা (মোট প্রায় ২০০ ঘণ্টা) · **শুরুর অবস্থা:** Python-এ নতুন
 > **লক্ষ্য:** deployed Capstone product + ১০ জন আসল ব্যবহারকারী + junior-ইন্টারভিউ-প্রস্তুতি + CV/GitHub/LinkedIn
-> **ভিত্তি:** এই repo-র [Module 00–26](../README.md) নোট
+> **ভিত্তি:** এই repo-র [Module 00–26](.README.md) নোট
 
 ---
 
@@ -148,9 +148,9 @@ flowchart LR
 | সময় | নিয়ম |
 |---|---|
 | **১–১১ নভেম্বর (Python শেখা)** | AI **বন্ধ**। শুধু error বুঝতে না পারলে ১৫ মিনিট চেষ্টার পর ব্যাখ্যা চাও। কোড লিখিয়ে নিও না |
-| **৭ নভেম্বর থেকে** | **আগে test লেখো, তারপর AI** ([Module 03](../module-03-file-handling-error-control-testing/README.md)) |
+| **৭ নভেম্বর থেকে** | **আগে test লেখো, তারপর AI** ([Module 03](.module-03-file-handling-error-control-testing/README.md)) |
 | **Gate/Exam মক (১১ নভেম্বর, ২৭ নভেম্বর, ৩০ নভেম্বর, ১১ ডিসেম্বর)** | **AI বন্ধ**, সময় ধরে |
-| **ডিসেম্বর** | [Module 20](../module-20-ai-assisted-engineering-debugging/README.md)-এর নিয়মে: spec → plan → ছোট diff → নিজে পড়ে accept → review note |
+| **ডিসেম্বর** | [Module 20](.module-20-ai-assisted-engineering-debugging/README.md)-এর নিয়মে: spec → plan → ছোট diff → নিজে পড়ে accept → review note |
 | **DSA অনুশীলন** | সবসময় AI বন্ধ। আটকে গেলে সমাধান দেখো, তারপর ঢেকে নিজে আবার লেখো |
 
 > **মূল নিয়ম:** যে কোড তুমি ব্যাখ্যা করতে পারবে না, সেটা repo-তে যাবে না।
@@ -162,12 +162,12 @@ flowchart LR
 | সপ্তাহ | বিষয় | কী করবে |
 |---|---|---|
 | ১ | Python drill | ছোট সমস্যা: sum, reverse, palindrome, FizzBuzz |
-| ২ | **Big O, Array, Prefix sum** ([Module 03 DSA](../module-03-file-handling-error-control-testing/README.md)), String, Hash map ([Module 05 DSA](../module-05-modules-packages-apis/README.md)) | ৫টা সহজ সমস্যা |
-| ৩ | **Two pointers, Sliding window** ([Module 08 DSA](../module-08-css-layout-responsive-design/README.md)) | ৫টা সহজ সমস্যা |
-| ৪ | **Recursion** ([Module 11 DSA](../module-11-django-models-orm-your-product/README.md)), Backtracking মৌলিক | ৪টা সহজ + ১টা মাঝারি |
-| ৫ | **Sorting ও Binary search** ([Module 15 DSA](../module-15-api-quality-background-jobs/README.md)) | merge sort নিজে লেখো, ৪টা সমস্যা |
-| ৬ | **Stack, Queue, Valid parentheses** ([Module 18 DSA](../module-18-react-full-stack-integration/README.md)) | ৫টা সমস্যা |
-| ৭ | **Linked list** ([Module 21 DSA](../module-21-system-design-unfamiliar-codebases/README.md)), **Tree, BFS/DFS** ([Module 25 DSA](../module-25-real-users-product-analytics/README.md)) | ৬টা সমস্যা |
+| ২ | **Big O, Array, Prefix sum** ([Module 03 DSA](.module-03-file-handling-error-control-testing/README.md)), String, Hash map ([Module 05 DSA](.module-05-modules-packages-apis/README.md)) | ৫টা সহজ সমস্যা |
+| ৩ | **Two pointers, Sliding window** ([Module 08 DSA](.module-08-css-layout-responsive-design/README.md)) | ৫টা সহজ সমস্যা |
+| ৪ | **Recursion** ([Module 11 DSA](.module-11-django-models-orm-your-product/README.md)), Backtracking মৌলিক | ৪টা সহজ + ১টা মাঝারি |
+| ৫ | **Sorting ও Binary search** ([Module 15 DSA](.module-15-api-quality-background-jobs/README.md)) | merge sort নিজে লেখো, ৪টা সমস্যা |
+| ৬ | **Stack, Queue, Valid parentheses** ([Module 18 DSA](.module-18-react-full-stack-integration/README.md)) | ৫টা সমস্যা |
+| ৭ | **Linked list** ([Module 21 DSA](.module-21-system-design-unfamiliar-codebases/README.md)), **Tree, BFS/DFS** ([Module 25 DSA](.module-25-real-users-product-analytics/README.md)) | ৬টা সমস্যা |
 | ৮ | মিশ্র পুনরাবৃত্তি | যেগুলো আটকেছে সেগুলো আবার |
 
 **নিয়ম:** প্রতিটা সমস্যায় ১) ৫ মিনিটে সমস্যা বুঝে নিজের ভাষায় লেখো ২) brute force আগে ৩) সময়-জটিলতা বলো ৪) পরে ভালো উপায়। যেকোনো অনুশীলন-প্ল্যাটফর্ম ব্যবহার করতে পারো; সমস্যা নিজে বেছে নাও আর সহজ থেকে শুরু করো।
@@ -176,7 +176,7 @@ flowchart LR
 
 ## 🧱 তুমি কী বানাচ্ছ (Capstone পরিধি)
 
-একটাই product, ছোট ও গভীর। **MVP = মাত্র ৩টা কাজ** ([Module 06](../module-06-product-thinking-going-live/README.md))।
+একটাই product, ছোট ও গভীর। **MVP = মাত্র ৩টা কাজ** ([Module 06](.module-06-product-thinking-going-live/README.md))।
 
 ```mermaid
 flowchart TD
@@ -208,7 +208,7 @@ flowchart TD
 
 ### Day 1 · ১ নভেম্বর (রবি) — Setup ও প্রথম লাইন
 - **১ম দিনে করো:** উপরের **দক্ষতার রেটিং টেবিল** পূরণ করে ফাইলে সেভ করো
-- 📖 [Module 00](../module-00-pre-course-python-basics/README.md) পুরো + [Module 01](../module-01-programming-foundations-first-deploy/README.md) **Live Class 1**
+- 📖 [Module 00](.module-00-pre-course-python-basics/README.md) পুরো + [Module 01](.module-01-programming-foundations-first-deploy/README.md) **Live Class 1**
 - 🛠️ Python ও VS Code install; terminal-এ `pwd/ls/cd/mkdir`; `hello.py`; variable, type, `input/print`; `softex-practice` repo খোলো
 - 🧩 Python drill: ৫টা ছোট প্রোগ্রাম (নাম-বয়স, বৃত্তের ক্ষেত্রফল, তাপমাত্রা রূপান্তর)
 - ✅ `python --version` চলে · commit করেছ
@@ -220,7 +220,7 @@ flowchart TD
 - ✅ Live URL কাজ করছে · ৩টা অর্থবহ commit
 
 ### Day 3 · ৩ নভেম্বর (মঙ্গল) — Loop, List, Set
-- 📖 [Module 02](../module-02-logic-loops-data-structures/README.md) **Live Class 1**
+- 📖 [Module 02](.module-02-logic-loops-data-structures/README.md) **Live Class 1**
 - 🛠️ ১০টা drill (AI ছাড়া): ১–১০০ যোগ, নামতা, FizzBuzz, list উল্টানো, set দিয়ে ডুপ্লিকেট বাদ, comprehension
 - 🧩 DSA শুরু: sum/max/reverse/palindrome
 - ✅ FizzBuzz **না দেখে** লিখতে পারো
@@ -232,7 +232,7 @@ flowchart TD
 - ✅ আসল ডাটায় সঠিক ফল
 
 ### Day 5 · ৫ নভেম্বর (বৃহস্পতি) — File ও Exception
-- 📖 [Module 03](../module-03-file-handling-error-control-testing/README.md) **Live Class 1**
+- 📖 [Module 03](.module-03-file-handling-error-control-testing/README.md) **Live Class 1**
 - 🛠️ ৫,০০০ লাইনের নকল log তৈরি (কয়েকটা ভাঙা লাইন সহ); generator দিয়ে পড়া; `try/except`; JSON সেভ
 - 🧩 DSA: string reverse, vowel count, anagram চেক
 - ✅ ভাঙা লাইনে প্রোগ্রাম থামে না
@@ -254,7 +254,7 @@ flowchart TD
 - ✅ `pytest` সবুজ · AI-র একটা suggestion reject করেছ ও কারণ লিখেছ
 
 ### Day 8 · ৮ নভেম্বর (রবি) — OOP (১)
-- 📖 [Module 04](../module-04-object-oriented-programming/README.md) **Live Class 1**
+- 📖 [Module 04](.module-04-object-oriented-programming/README.md) **Live Class 1**
 - 🛠️ `Expense` class, `Money` class (`@property` দিয়ে যাচাই)। Expense Tracker class-এ রূপান্তর
 - 🧩 DSA: prefix sum দিয়ে range-sum সমস্যা ৩টা
 - ✅ `__str__`, `__repr__`, property লিখতে পারো
@@ -267,7 +267,7 @@ flowchart TD
 - ✅ Package install হয়, test সবুজ · কথা বলার সময় ঠিক
 
 ### Day 10 · ১০ নভেম্বর (মঙ্গল) — Module, Package, Virtual Env
-- 📖 [Module 05](../module-05-modules-packages-apis/README.md) **Live Class 1**
+- 📖 [Module 05](.module-05-modules-packages-apis/README.md) **Live Class 1**
 - 🛠️ `venv`, `requirements.txt`, `.gitignore`, environment variable থেকে config; Toolkit সুন্দর package কাঠামোয়
 - 🧩 DSA: string manipulation, frequency counting (hash map)
 - ✅ নতুন venv-এ `pip install -r requirements.txt` দিয়ে সব চলে
@@ -279,7 +279,7 @@ flowchart TD
 - ✅ অন্তত চারটা AI ছাড়া পেরেছ; যেটা পারোনি লগে লেখো
 
 ### Day 12 · ১২ নভেম্বর (বৃহস্পতি) — Product Thinking
-- 📖 [Module 06](../module-06-product-thinking-going-live/README.md) পুরো (গল্পসহ)
+- 📖 [Module 06](.module-06-product-thinking-going-live/README.md) পুরো (গল্পসহ)
 - 🛠️ মানুষটার সাথে কথা (আচরণ জিজ্ঞেস করো, সমাধান নয়) → **one-page spec** → MVP ৩টা কাজ + "এবার করছি না" তালিকা → **launch page** live করে তাকে লিংক পাঠাও
 - 🧩 DSA: hash map দিয়ে Two Sum (brute force ও hash উভয়)
 - ✅ Spec আছে · Launch page live · প্রথম reaction লেখা
@@ -295,13 +295,13 @@ flowchart TD
 ## 🗓️ সপ্তাহ ৩ · Web ঝালাই, SQL, Django শুরু (১৪–২০ নভেম্বর)
 
 ### Day 14 · ১৪ নভেম্বর (শনি) — HTTP, HTML, CSS (সংকুচিত)
-- 📖 [Module 07](../module-07-how-the-web-works-html/README.md) (HTTP, status, cookie/session, semantic HTML, accessibility) + [Module 08](../module-08-css-layout-responsive-design/README.md) (design system, responsive) — **শুধু যা জানো না তা**
+- 📖 [Module 07](.module-07-how-the-web-works-html/README.md) (HTTP, status, cookie/session, semantic HTML, accessibility) + [Module 08](.module-08-css-layout-responsive-design/README.md) (design system, responsive) — **শুধু যা জানো না তা**
 - 🛠️ নিজের page-এ DevTools **Network tab**; hand-built product page (working form সহ); CSS variable দিয়ে design system; **আসল ফোনে** পরীক্ষা
 - 🧩 **DSA Class 3:** Two pointers, Sliding window
 - ✅ Network tab-এ একটা request-এর method, status, header ব্যাখ্যা করতে পারো
 
 ### Day 15 · ১৫ নভেম্বর (রবি) — SQL (১)
-- 📖 [Module 09](../module-09-relational-databases-sql/README.md) **Live Class 1**
+- 📖 [Module 09](.module-09-relational-databases-sql/README.md) **Live Class 1**
 - 🛠️ PostgreSQL + pgAdmin; `categories`, `products` table; CRUD; constraint
 - 🧩 DSA: sliding window — সর্বোচ্চ k-যোগফল
 - ✅ ১০টা row insert, update, delete করেছ
@@ -313,20 +313,20 @@ flowchart TD
 - ✅ ৪টা query নিজে লিখেছ
 
 ### Day 17 · ১৭ নভেম্বর (মঙ্গল) — ER Diagram
-- 📖 [Module 10](../module-10-data-modeling-django-fundamentals/README.md) **Live Class 1**
+- 📖 [Module 10](.module-10-data-modeling-django-fundamentals/README.md) **Live Class 1**
 - 🛠️ নিজের product-এর **ER diagram** (spec-এর noun থেকে entity)। কাউকে দিয়ে ছিদ্র খোঁজাও। PostgreSQL-এ schema
 - 🧩 DSA: sliding window — সবচেয়ে লম্বা unique substring
 - ✅ ER diagram আছে, peer review-র সংশোধন হয়েছে
 
 ### Day 18 · ১৮ নভেম্বর (বুধ) — Django Fundamentals
 - 📖 Module 10 **Live Class 2**
-- ⚠️ **প্রথম `migrate`-এর আগে** custom user model (`AUTH_USER_MODEL`) ঠিক করো ([Module 12](../module-12-authentication-automated-testing/README.md) দেখো); পরে বদলানো প্রায় অসম্ভব
+- ⚠️ **প্রথম `migrate`-এর আগে** custom user model (`AUTH_USER_MODEL`) ঠিক করো ([Module 12](.module-12-authentication-automated-testing/README.md) দেখো); পরে বদলানো প্রায় অসম্ভব
 - 🛠️ Django project/app, URL, view, template inheritance, PostgreSQL কানেক্ট (credential env-এ)
 - 🧩 DSA: পুনরাবৃত্তি — যা আটকেছে
 - ✅ `runserver`-এ পাতা খোলে, request lifecycle আঁকতে পারো
 
 ### Day 19 · ১৯ নভেম্বর (বৃহস্পতি) — Models ও ORM
-- 📖 [Module 11](../module-11-django-models-orm-your-product/README.md) **Live Class 1**
+- 📖 [Module 11](.module-11-django-models-orm-your-product/README.md) **Live Class 1**
 - 🛠️ ER diagram থেকে model; `makemigrations/migrate`; admin সাজাও; ২০টা আসল record; **ইচ্ছা করে N+1 বানাও, query গুনে ঠিক করো** (`select_related`)
 - 🧩 **DSA Class 4:** Recursion (factorial, fibonacci + memo)
 - ✅ N+1 কী ও কীভাবে ধরতে হয় নিজের ভাষায় বলতে পারো
@@ -349,7 +349,7 @@ flowchart TD
 - ✅ v1 চলছে, ফিডব্যাক-নোট আছে
 
 ### Day 22 · ২২ নভেম্বর (রবি) — Authentication
-- 📖 [Module 12](../module-12-authentication-automated-testing/README.md) **Live Class 1**
+- 📖 [Module 12](.module-12-authentication-automated-testing/README.md) **Live Class 1**
 - 🛠️ Register/login/logout/password reset (dev-এ console email backend); প্রতিটা model-এ `owner`; ব্যবহারকারী **শুধু নিজের** ডাটা দেখে (`get_object_or_404(..., owner=request.user)`)
 - 🧩 DSA: recursion — power(x, n), sum of digits
 - ✅ অন্য user-এর রেকর্ডের URL লিখলে ৪০৪ আসে
@@ -361,7 +361,7 @@ flowchart TD
 - ✅ সব সবুজ · README-তে "কীভাবে test চালাবে"
 
 ### Day 24 · ২৪ নভেম্বর (মঙ্গল) — DRF (১)
-- 📖 [Module 13](../module-13-rest-api-drf/README.md) **Live Class 1**
+- 📖 [Module 13](.module-13-rest-api-drf/README.md) **Live Class 1**
 - 🛠️ Serializer (field + object validation), ViewSet, Router; CRUD API; Postman/Browsable API-তে পরীক্ষা
 - 🧩 DSA: bubble/selection/insertion sort নিজে লেখো
 - ✅ `GET/POST/PATCH/DELETE` সব কাজ করে
@@ -373,16 +373,16 @@ flowchart TD
 - ✅ অন্য user-এর token দিয়ে আমার ডাটা পায় না (test দিয়ে প্রমাণ)
 
 ### Day 26 · ২৬ নভেম্বর (বৃহস্পতি) — API মান ও Docs
-- 📖 [Module 15](../module-15-api-quality-background-jobs/README.md) **Live Class 1**
+- 📖 [Module 15](.module-15-api-quality-background-jobs/README.md) **Live Class 1**
 - 🛠️ API test (authenticated, permission, error); `drf-spectacular` Swagger docs; Postman collection + environment
 - 👥 **একজন বন্ধুকে** collection দিয়ে চালাতে বলো; সে আটকালে docs অসম্পূর্ণ
 - 🧩 DSA: quick sort ও binary search
 - ✅ বন্ধু collection চালাতে পেরেছে
 
 ### Day 27 · ২৭ নভেম্বর (শুক্র) — 🚧 Exam Week 1 মক + CV খসড়া
-- 📖 [Module 14](../module-14-exam-week-1/README.md) (মক টেস্ট অংশ)
+- 📖 [Module 14](.module-14-exam-week-1/README.md) (মক টেস্ট অংশ)
 - 🛠️ **(দেড় ঘণ্টা, AI বন্ধ):** ১) SQL query ২) ORM view (query ≤ ৩) ৩) auth + IDOR test ৪) DRF serializer validation ৫) একটা HTTP/Django lifecycle ব্যাখ্যা। তারপর ৪৫ মিনিট ফাঁক পূরণ
-- **CV-র প্রথম খসড়া (৩০ মিনিট):** [Module 26](../module-26-capstone-interview-career-launch/README.md)-এর নিয়মে artifact + ফলাফল
+- **CV-র প্রথম খসড়া (৩০ মিনিট):** [Module 26](.module-26-capstone-interview-career-launch/README.md)-এর নিয়মে artifact + ফলাফল
 - সাপ্তাহিক রিভিউ
 - ✅ যে অংশে আটকেছ, সেটা লগে + আগামী সপ্তাহে ২০ মিনিট
 
@@ -397,7 +397,7 @@ flowchart TD
 - ✅ Task-এ object নয় **id** পাঠিয়েছ · কেন idempotent দরকার বলতে পারো
 
 ### Day 29 · ২৯ নভেম্বর (রবি) — Security (১)
-- 📖 [Module 16](../module-16-web-application-security/README.md) **Live Class 1**
+- 📖 [Module 16](.module-16-web-application-security/README.md) **Live Class 1**
 - 🛠️ একটা **ফেলে-দেওয়া ছোট Django app** বানিয়ে ইচ্ছা করে ৩টা ফাঁক (XSS `|safe`, SQL injection `.raw()` + f-string, IDOR) → নিজে আক্রমণ করো → ঠিক করো
 - 🧩 DSA: binary search variant
 - ✅ প্রতিটা ফাঁক আক্রমণ করে প্রমাণ করেছ
@@ -410,7 +410,7 @@ flowchart TD
 - ✅ রিপোর্ট আছে · ৩টা fix + test
 
 ### Day 31 · ১ ডিসেম্বর (মঙ্গল) — JavaScript + React শুরু
-- 📖 [Module 17](../module-17-javascript-api-integration/README.md) Live Class 2 + [Module 18](../module-18-react-full-stack-integration/README.md) Live Class 1 (**ঝালাই**, তুমি React জানো)
+- 📖 [Module 17](.module-17-javascript-api-integration/README.md) Live Class 2 + [Module 18](.module-18-react-full-stack-integration/README.md) Live Class 1 (**ঝালাই**, তুমি React জানো)
 - 🛠️ Vite React প্রজেক্ট; `api()` wrapper (Bearer token + **expired token refresh**); লগইন; CORS ঠিক; loading/error/empty তিন অবস্থা
 - 🧩 **DSA Class 6:** Stack, Queue, Valid parentheses
 - ✅ ব্রাউজার থেকে নিজের DRF API-তে লগইন ও ডাটা আনা কাজ করে
@@ -423,7 +423,7 @@ flowchart TD
 
 ### Day 33 · ৩ ডিসেম্বর (বৃহস্পতি) — প্রথম Production Deploy
 - 🛠️ **Backend deploy** (Gunicorn, `DEBUG=False`, `ALLOWED_HOSTS`, secret env-এ, managed PostgreSQL, HTTPS) + **Frontend deploy** (production build, `VITE_API_URL`, SPA rewrite) + CORS-এ production domain
-- 🛠️ [Module 25](../module-25-real-users-product-analytics/README.md)-এর **event tracking** (৫টা event: `signup`, `first_product_viewed`, `added_to_cart`, `order_placed`, `returned_next_day`)
+- 🛠️ [Module 25](.module-25-real-users-product-analytics/README.md)-এর **event tracking** (৫টা event: `signup`, `first_product_viewed`, `added_to_cart`, `order_placed`, `returned_next_day`)
 - 🧩 DSA: queue দিয়ে ছোট সমস্যা
 - ✅ আসল ফোনে লিংক খুলে সম্পূর্ণ flow চলে
 - ⏭️ আজ শেষ না হলে কাল শুক্রবারে শেষ করবে
@@ -439,26 +439,26 @@ flowchart TD
 ## 🗓️ সপ্তাহ ৬ · Docker, CI/CD, AI-সহায়ক কাজ, System Design (৫–১১ ডিসেম্বর)
 
 ### Day 35 · ৫ ডিসেম্বর (শনি) — Docker
-- 📖 [Module 19](../module-19-docker-cicd-production-ops/README.md) **Live Class 1**
+- 📖 [Module 19](.module-19-docker-cicd-production-ops/README.md) **Live Class 1**
 - 🛠️ `Dockerfile` (layer cache, non-root), `.dockerignore`, `docker-compose.yml` (web + db + redis + worker)। `docker compose up`-এ পুরো app চলে
 - 🧩 DSA: পুনরাবৃত্তি
 - ✅ ফ্রেশ clone থেকে ৩টা কমান্ডে চালানো যায়
 
 ### Day 36 · ৬ ডিসেম্বর (রবি) — CI/CD, Logging, Incident অনুশীলন
 - 📖 Module 19 **Live Class 2**
-- 🛠️ GitHub Actions: lint (`ruff`) + `pytest` + branch protection; structured logging; image-কে commit SHA দিয়ে tag (rollback)। **নিজের তৈরি incident:** deploy-এ ইচ্ছা করে একটা ভুল ঢোকাও, এরপর **শুধু log দেখে** কারণ বের করো, রিপোর্ট লেখো ([Module 19](../module-19-docker-cicd-production-ops/README.md)-এর ছাঁচে)
+- 🛠️ GitHub Actions: lint (`ruff`) + `pytest` + branch protection; structured logging; image-কে commit SHA দিয়ে tag (rollback)। **নিজের তৈরি incident:** deploy-এ ইচ্ছা করে একটা ভুল ঢোকাও, এরপর **শুধু log দেখে** কারণ বের করো, রিপোর্ট লেখো ([Module 19](.module-19-docker-cicd-production-ops/README.md)-এর ছাঁচে)
 - 👥 **আরও ৪ জন ব্যবহারকারী** (মোট ৭)
 - 🧩 DSA: পুনরাবৃত্তি
 - ✅ test ভাঙলে merge আটকায় · incident report আছে
 
 ### Day 37 · ৭ ডিসেম্বর (সোম) — AI-সহায়ক ইঞ্জিনিয়ারিং
-- 📖 [Module 20](../module-20-ai-assisted-engineering-debugging/README.md) পুরো
+- 📖 [Module 20](.module-20-ai-assisted-engineering-debugging/README.md) পুরো
 - 🛠️ `CLAUDE.md`/context file; একটা ছোট feature **স্পষ্ট spec** লিখে plan-first, test-first পদ্ধতিতে AI দিয়ে বানাও; **review note** লেখো। এরপর Bug Hunt: নিজের repo-তে বন্ধুকে ৫টা bug বসাতে বলো, Round 1 AI ছাড়া, Round 2 AI সহ
 - 🧩 DSA: linked list শুরু
 - ✅ Review note আছে · Bug Hunt স্কোরবোর্ড আছে
 
 ### Day 38 · ৮ ডিসেম্বর (মঙ্গল) — System Design
-- 📖 [Module 21](../module-21-system-design-unfamiliar-codebases/README.md) **Live Class 1**
+- 📖 [Module 21](.module-21-system-design-unfamiliar-codebases/README.md) **Live Class 1**
 - 🛠️ নিজের product-এর **architecture diagram** + ৬০০ গুণ ব্যবহারকারীর **scaling plan** (১–২ পাতা); প্রতিটা বাক্সের "ভাঙলে কী হবে" টেবিল
 - 🧩 **DSA Class 7:** Linked list (reversal, cycle detection)
 - ✅ Diagram + plan আছে; trade-off ব্যাখ্যা করতে পারো
@@ -469,13 +469,13 @@ flowchart TD
 - ✅ কমপক্ষে fork + branch + ছোট change তৈরি; PR পাঠানো আদর্শ
 
 ### Day 40 · ১০ ডিসেম্বর (বৃহস্পতি) — AI Feature (১)
-- 📖 [Module 23](../module-23-ai-product-features/README.md) **Live Class 1**
+- 📖 [Module 23](.module-23-ai-product-features/README.md) **Live Class 1**
 - 🛠️ LLM API কল (timeout, retry, structured output + validation, token/খরচ লগ); product-ডাটা chunk করে embedding → **pgvector** retrieval; "শুধু প্রসঙ্গ থেকে বলো, না থাকলে জানি না" প্রম্পট
 - 🧩 DSA: tree basics — inorder/preorder/postorder
 - ✅ নিজের ডাটা থেকে উত্তর আসে; ডাটায় নেই এমন প্রশ্নে "জানি না" বলে
 
 ### Day 41 · ১১ ডিসেম্বর (শুক্র) — 🚧 Exam Week 2 মক + ব্যবহারকারী ১০
-- 📖 [Module 22](../module-22-exam-week-2/README.md)
+- 📖 [Module 22](.module-22-exam-week-2/README.md)
 - 🛠️ **(দেড় ঘণ্টা, AI বন্ধ):** মডিউল ১৫–২১ থেকে: Celery task লেখা, XSS/SQLi/IDOR ফাঁক খোঁজা, React component, Docker compose, system design প্রশ্ন, linked list/stack সমস্যা। ফাঁক পূরণ ৪৫ মিনিট
 - 👥 **ব্যবহারকারী মোট ১০ জনে পৌঁছাও** (বাকি ৩ জনকে লিংক)
 - সাপ্তাহিক রিভিউ
@@ -491,7 +491,7 @@ flowchart TD
 - ✅ Injection আক্রমণ ব্যর্থ হয়; tool call লগে দেখা যায়
 
 ### Day 43 · ১৩ ডিসেম্বর (রবি) — Eval (১)
-- 📖 [Module 24](../module-24-ai-evaluation-quality-assurance/README.md) **Live Class 1**
+- 📖 [Module 24](.module-24-ai-evaluation-quality-assurance/README.md) **Live Class 1**
 - 🛠️ **২০টা eval case** (happy path, তথ্য নেই, বাংলা/বাংলিশ/বানান ভুল, adversarial, ফরম্যাট) + স্কোরিং স্ক্রিপ্ট + প্রতি case ৩ বার চালানো; category-wise pass rate
 - 🧩 DSA: tree DFS — max depth
 - ✅ প্রথম pass rate পেয়েছ
@@ -510,7 +510,7 @@ flowchart TD
 - ✅ পরিবর্তন লাইভ; "আগে" সংখ্যা সংরক্ষিত
 
 ### Day 46 · ১৬ ডিসেম্বর (বুধ) — Hardening ও User Report
-- 📖 [Module 26](../module-26-capstone-interview-career-launch/README.md) **Live Class 1** (final hardening অংশ)
+- 📖 [Module 26](.module-26-capstone-interview-career-launch/README.md) **Live Class 1** (final hardening অংশ)
 - 🛠️ নিরাপত্তা চেকলিস্ট আবার (`check --deploy`, `pip-audit`, `gitleaks`); error/empty state; মোবাইল; ধীরতম পাতা। **First 10 Users Report** (খসড়া; ১০ জনের সীমা সৎভাবে লেখো)। Commit history পরিষ্কার
 - 🧩 DSA: মিশ্র সমস্যা
 - ✅ সব test সবুজ · রিপোর্টের খসড়া আছে
@@ -544,7 +544,7 @@ flowchart TD
 ### Day 50 · ২০ ডিসেম্বর (রবি) — Final Viva ও আবেদন শুরু
 - 🛠️ **Final viva স্ব-পরীক্ষা (৩০ মিনিট):** product, architecture, security, AI feature, AI-ব্যবহার — প্রতিটায় ২ মিনিট
 - 🛠️ **First 10 Users Report চূড়ান্ত** (১৫–২০ ডিসেম্বরের মাপ যোগ করে)
-- 🛠️ **প্রথম ৫–১০টা আবেদন/referral অনুরোধ** (বিস্তারিত: [Module 26](../module-26-capstone-interview-career-launch/README.md))
+- 🛠️ **প্রথম ৫–১০টা আবেদন/referral অনুরোধ** (বিস্তারিত: [Module 26](.module-26-capstone-interview-career-launch/README.md))
 - 🛠️ দক্ষতার **রেটিং টেবিল দ্বিতীয়বার** পূরণ করো, ১ নভেম্বরের সাথে তুলনা
 - 🛠️ এই গাইডলাইন ও `learning-log.md` repo-তে যোগ করো
 - ✅ ৫০ দিনের শেষ রিভিউ লিখেছ
@@ -651,7 +651,7 @@ flowchart TD
 | সাপ্তাহিক mock interview | অভ্যাসই আত্মবিশ্বাস |
 | Open-source PR চালিয়ে যাওয়া | রেফারেল ও অভিজ্ঞতা |
 | Capstone-এ ব্যবহারকারীর ফিডব্যাক অনুযায়ী কাজ | চলমান product = শক্তিশালী গল্প |
-| Kubernetes/Terraform ([DevOps কোর্স](../README.md) দেখো) | লক্ষ্য-ভূমিকা অনুযায়ী পরে |
+| Kubernetes/Terraform ([DevOps কোর্স](.README.md) দেখো) | লক্ষ্য-ভূমিকা অনুযায়ী পরে |
 
 > **বাজার নিয়ে:** নির্দিষ্ট কোম্পানি, বেতন বা চাহিদা এখানে লিখিনি, কারণ এগুলো দ্রুত বদলায়। নিজে Bdjobs, LinkedIn Jobs ও কোম্পানির ক্যারিয়ার পাতায় যাচাই করে নাও।
 

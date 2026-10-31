@@ -126,4 +126,4 @@ Softex-Software/
     └── README.md
 ```
 
-> ✍️ **লেখক:** Rafsun Jani · WPHelpZone LLC
+> ✍️ **লেখক:** Suaib
