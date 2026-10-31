@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Suaib's 50-Day Tracker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Sora:wght@600;700&display=swap">
+<style>
+/* Layout: slim sticky summary header, week-grouped day list below, tabs for skills and final checklist */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --surface2:#eef0f4; --line:#dfe3ea;
+  --fg:#12202f; --muted:#5d6b7c; --accent:#0f5f7a; --accent-soft:#dcedf3; --accent-fg:#ffffff;
+  --good:#1c7a4b; --good-soft:#dff3e8; --warn:#a85d00; --warn-soft:#fbeed8; --crit:#b3261e; --crit-soft:#fbe4e2;
+  --f-body:"Hind Siliguri",system-ui,sans-serif; --f-disp:"Sora","Hind Siliguri",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d141c; --surface:#151e29; --surface2:#1c2733; --line:#27354a;
+  --fg:#e6ecf3; --muted:#93a3b6; --accent:#5cc0de; --accent-soft:#16384a; --accent-fg:#06222d;
+  --good:#52c98a; --good-soft:#143826; --warn:#f0b35a; --warn-soft:#3a2b10; --crit:#ff8a80; --crit-soft:#3d1c1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d141c; --surface:#151e29; --surface2:#1c2733; --line:#27354a;
+  --fg:#e6ecf3; --muted:#93a3b6; --accent:#5cc0de; --accent-soft:#16384a; --accent-fg:#06222d;
+  --good:#52c98a; --good-soft:#143826; --warn:#f0b35a; --warn-soft:#3a2b10; --crit:#ff8a80; --crit-soft:#3d1c1a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+header.top{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-disp);font-size:clamp(22px,4.5vw,32px);line-height:1.2;margin:4px 0 6px;text-wrap:balance}
+.goal{color:var(--muted);margin:0}
+.goal b{color:var(--accent);font-weight:600}
+.ring{position:relative;width:112px;height:112px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .num b{font-family:var(--f-disp);font-size:26px;line-height:1}
+.ring .num span{font-size:12px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat{background:var(--surface);padding:14px 16px;min-width:0}
+.stat .v{font-family:var(--f-disp);font-size:22px;font-weight:600;line-height:1.2}
+.stat .l{font-size:13px;color:var(--muted)}
+.bar{height:8px;background:var(--surface2);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .3s}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{background:none;border:0;padding:10px 14px;color:var(--muted);font-weight:500;border-bottom:2px solid transparent;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--accent);font-weight:600}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.spacer{flex:1}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;font-size:14px}
+.btn:hover{background:var(--surface2)}
+.week{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.week>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:14px 16px;align-items:center}
+.week>summary::-webkit-details-marker{display:none}
+.wt{font-weight:600;min-width:0}
+.wt small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.wp{font-family:var(--f-mono);font-size:13px;color:var(--muted);text-align:right}
+.week .bar{grid-column:1/-1;height:5px}
+.days{border-top:1px solid var(--line)}
+.day{border-bottom:1px solid var(--line)}
+.day:last-child{border-bottom:0}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 16px}
+.day.today .row{background:var(--accent-soft)}
+.chk{width:30px;height:30px;border-radius:8px;border:2px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:0;flex:none}
+.chk:hover{border-color:var(--accent)}
+.chk svg{width:18px;height:18px;opacity:0;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.chk[aria-checked="true"]{background:var(--good);border-color:var(--good)}
+.chk[aria-checked="true"] svg{opacity:1}
+.chk.sm{width:22px;height:22px;border-radius:6px;border-width:2px}
+.chk.sm svg{width:13px;height:13px}
+.main{min-width:0;background:none;border:0;text-align:left;padding:2px 0;display:block;width:100%}
+.dline{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.dn{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.dt{font-weight:600}
+.day.done .dt{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.dd{font-size:13px;color:var(--muted)}
+.tags{display:flex;gap:6px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
+.tag{font-size:12px;padding:1px 9px;border-radius:999px;background:var(--surface2);color:var(--muted);white-space:nowrap}
+.tag.gate,.tag.exam{background:var(--warn-soft);color:var(--warn)}
+.tag.catch{background:var(--surface2)}
+.tag.final{background:var(--accent-soft);color:var(--accent)}
+.tag.now{background:var(--accent);color:var(--accent-fg);font-weight:600}
+.tag.late{background:var(--crit-soft);color:var(--crit)}
+.tag.ok{background:var(--good-soft);color:var(--good)}
+.detail{padding:4px 16px 16px 58px;display:grid;gap:10px}
+.detail[hidden]{display:none}
+.sub{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:start}
+.sub .lbl{font-size:12px;font-family:var(--f-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.sub .txt{font-size:14px;min-width:0;overflow-wrap:anywhere}
+.sub .chk{margin-top:1px}
+.sub > div{display:flex;flex-direction:column}
+.target{font-size:14px;background:var(--good-soft);color:var(--good);padding:8px 12px;border-radius:8px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.skills{width:100%;border-collapse:collapse}
+.skills th,.skills td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);font-size:14px}
+.skills th{font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.skills tr:last-child td{border-bottom:0}
+.skills td.c{width:90px}
+select{font:inherit;background:var(--surface2);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:4px 6px;width:100%}
+.tw{overflow-x:auto}
+.grp{padding:14px 16px;display:grid;gap:8px}
+.grp h3{margin:0;font-family:var(--f-disp);font-size:15px}
+.li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:14px}
+.note{color:var(--muted);font-size:13px;margin:0}
+footer{color:var(--muted);font-size:13px;text-align:center}
+@media (max-width:560px){
+  header.top{grid-template-columns:1fr}
+  .ring{width:96px;height:96px}
+  .row{grid-template-columns:auto 1fr}
+  .tags{grid-column:2;justify-content:flex-start}
+  .detail{padding-left:16px}
+}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">50-Day Guideline · 1 Nov – 20 Dec 2026</div>
+      <h1>Suaib Al Hasan</h1>
+      <p class="goal">লক্ষ্য: <b>Junior Software Developer</b> · প্রতিদিন ৪ ঘণ্টা · শেষ হলে টিক দাও</p>
+    </div>
+    <div class="ring" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="var(--surface2)" stroke-width="10"/><circle id="ringArc" cx="50" cy="50" r="42" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="263.9"/></svg>
+      <div class="num"><b id="ringPct">0%</b><span id="ringSub">0 / 50</span></div>
+    </div>
+  </header>
+
+  <section class="stats" aria-label="অগ্রগতি">
+    <div class="stat"><div class="v mono" id="sDone">0</div><div class="l">দিন শেষ (৫০-এর মধ্যে)</div></div>
+    <div class="stat"><div class="v mono" id="sHours">0</div><div class="l">ঘণ্টা কাজ (২০০-র মধ্যে)</div></div>
+    <div class="stat"><div class="v mono" id="sStreak">0</div><div class="l">টানা দিন (streak)</div></div>
+    <div class="stat"><div class="v mono" id="sBehind">0</div><div class="l">পিছিয়ে আছে</div></div>
+    <div class="stat"><div class="v mono" id="sLeft">50</div><div class="l">দিন বাকি (২০ ডিসেম্বর পর্যন্ত)</div></div>
+  </section>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t-days" aria-selected="true" data-tab="days">দিনলিপি</button>
+    <button class="tab" role="tab" id="t-skills" aria-selected="false" data-tab="skills">দক্ষতা রেটিং</button>
+    <button class="tab" role="tab" id="t-final" aria-selected="false" data-tab="final">চূড়ান্ত চেকলিস্ট</button>
+  </div>
+
+  <section id="p-days" role="tabpanel" aria-labelledby="t-days" style="display:flex;flex-direction:column;gap:12px">
+    <div class="toolbar">
+      <button class="chip" data-f="all" aria-pressed="true">সব</button>
+      <button class="chip" data-f="todo" aria-pressed="false">বাকি</button>
+      <button class="chip" data-f="done" aria-pressed="false">শেষ</button>
+      <span class="spacer"></span>
+      <button class="btn" id="goToday">আজকের দিনে যাও</button>
+    </div>
+    <div id="weeks" style="display:flex;flex-direction:column;gap:12px"></div>
+  </section>
+
+  <section id="p-skills" role="tabpanel" aria-labelledby="t-skills" hidden style="display:none;flex-direction:column;gap:12px">
+    <p class="note">১ নভেম্বর আর ২০ ডিসেম্বর, দুবার নিজেকে ১–৫ রেটিং দাও। লক্ষ্য: সবকটায় কমপক্ষে ৩, মূলগুলোয় ৪।</p>
+    <div class="panel tw"><table class="skills" id="skillTable"></table></div>
+  </section>
+
+  <section id="p-final" role="tabpanel" aria-labelledby="t-final" hidden style="display:none;flex-direction:column;gap:12px">
+    <p class="note" id="finalNote"></p>
+    <div id="finalGroups" style="display:flex;flex-direction:column;gap:12px"></div>
+  </section>
+
+  <footer>টিক চিহ্ন এই ব্রাউজারে সংরক্ষিত থাকে। একই ব্রাউজার থেকে খুললে অগ্রগতি থেকে যাবে।</footer>
+</div>
+
+<script>
+(function(){
+  var START=new Date(2026,10,1);
+  var WD=["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
+  var MON=["জানু","ফেব্রু","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+  // [title, read, build, dsa, done-when, kind]  kind: n normal, c catch-up, g gate, e exam, f final
+  var D=[
+  ["Setup ও প্রথম লাইন","Module 00 পুরো + Module 01 Live Class 1","দক্ষতার রেটিং টেবিল পূরণ; Python ও VS Code install; hello.py; softex-practice repo","Python drill: ৫টা ছোট প্রোগ্রাম","python --version চলে · commit করেছ","n"],
+  ["Logic, Git ও প্রথম Deploy","Module 01 Live Class 2","Personal Portfolio Page GitHub Pages-এ live","Python drill: গ্রেড, জোড়-বিজোড়, লিপ ইয়ার","Live URL কাজ করছে · ৩টা অর্থবহ commit","n"],
+  ["Loop, List, Set","Module 02 Live Class 1","১০টা drill (AI ছাড়া): নামতা, FizzBuzz, list উল্টানো, set, comprehension","DSA শুরু: sum/max/reverse/palindrome","FizzBuzz না দেখে লিখতে পারো","n"],
+  ["Dictionary ও Function","Module 02 Live Class 2","Expense Tracker: আসল খরচ, category-wise মোট, ৩টা function","দুটো list-এর common element (set ও loop)","আসল ডাটায় সঠিক ফল","n"],
+  ["File ও Exception","Module 03 Live Class 1","৫,০০০ লাইনের log, generator দিয়ে পড়া, try/except, JSON সেভ","string reverse, vowel count, anagram","ভাঙা লাইনে প্রোগ্রাম থামে না","n"],
+  ["Catch-up + রিভিউ","—","বাকি কাজ শেষ; Module 01–03 interview উত্তর লেখা; GitHub profile README","—","সাপ্তাহিক রিভিউ লেখা হয়েছে","c"],
+  ["Testing ও AI tool","Module 03 Live Class 2","Log Analyzer-এর জন্য ৫টা pytest; test-first একটা refactor","DSA Class 1: Big O, Array, Prefix sum","pytest সবুজ · AI-র একটা suggestion reject করে কারণ লিখেছ","n"],
+  ["OOP (১)","Module 04 Live Class 1","Expense class, Money class (@property); Tracker class-এ রূপান্তর","prefix sum দিয়ে range-sum ৩টা","__str__, __repr__, property লিখতে পারো","n"],
+  ["OOP (২) + Brief খোঁজা","Module 04 Live Class 2","Finance Toolkit package (pip install -e .); একজন আসল মানুষ বাছো, কথা বলার সময় চাও","abstract class/polymorphism ছোট ডিজাইন","Package install হয়, test সবুজ · কথা বলার সময় ঠিক","n"],
+  ["Module, Package, Virtual Env","Module 05 Live Class 1","venv, requirements.txt, .gitignore, env variable config","string manipulation, frequency counting","নতুন venv-এ সব চলে","n"],
+  ["API ও GATE 1","Module 05 Live Class 2","Live Data Fetcher (requests, timeout, retry, mock test) তারপর GATE 1 স্ব-পরীক্ষা, AI বন্ধ","hash-map সমস্যা (GATE-এর অংশ)","অন্তত ৪টা AI ছাড়া পেরেছ","g"],
+  ["Product Thinking","Module 06 পুরো","মানুষটার সাথে কথা, one-page spec, MVP ৩টা কাজ, launch page live","Two Sum (brute force ও hash)","Spec আছে · Launch page live","n"],
+  ["Catch-up + রিভিউ","—","GATE 1-এর ফাঁক অনুশীলন; product-এর নাম; capstone repo ও SPEC.md; ৫টা উত্তর রেকর্ড","—","সাপ্তাহিক রিভিউ লেখা হয়েছে","c"],
+  ["HTTP, HTML, CSS (সংকুচিত)","Module 07 + Module 08, শুধু যা জানো না","DevTools Network tab; product page; CSS variable; আসল ফোনে পরীক্ষা","DSA Class 3: Two pointers, Sliding window","একটা request-এর method, status, header ব্যাখ্যা করতে পারো","n"],
+  ["SQL (১)","Module 09 Live Class 1","PostgreSQL + pgAdmin; categories, products; CRUD; constraint","sliding window: সর্বোচ্চ k-যোগফল","১০টা row insert/update/delete","n"],
+  ["SQL (২)","Module 09 Live Class 2","e-commerce DB সম্পূর্ণ; ৪টা query; index দিয়ে EXPLAIN","sorted array-তে pair sum","৪টা query নিজে লিখেছ","n"],
+  ["ER Diagram","Module 10 Live Class 1","নিজের product-এর ER diagram; কাউকে দিয়ে ছিদ্র খোঁজাও; schema","সবচেয়ে লম্বা unique substring","ER diagram আছে, peer review-র সংশোধন হয়েছে","n"],
+  ["Django Fundamentals","Module 10 Live Class 2","custom user model আগে ঠিক করো; project/app, URL, view, template, PostgreSQL","পুনরাবৃত্তি: যা আটকেছে","runserver-এ পাতা খোলে, request lifecycle আঁকতে পারো","n"],
+  ["Models ও ORM","Module 11 Live Class 1","ER থেকে model; migrate; admin; ২০টা record; N+1 বানিয়ে ঠিক করো","DSA Class 4: Recursion (factorial, fibonacci + memo)","N+1 কী ও কীভাবে ধরতে হয় বলতে পারো","n"],
+  ["Catch-up + রিভিউ","—","বাকি কাজ; ২–৩টা repo pin; Module 07–11 interview প্রশ্ন জোরে বলা","—","সাপ্তাহিক রিভিউ লেখা হয়েছে","c"],
+  ["Forms ও Web App v1","Module 11 Live Class 2","ModelForm, validation, pagination; তালিকা/বিস্তারিত/যোগ/সম্পাদনা; ১–২ জনকে দেখাও","backtracking: subsets","v1 চলছে, ফিডব্যাক-নোট আছে","n"],
+  ["Authentication","Module 12 Live Class 1","Register/login/logout/reset; model-এ owner; শুধু নিজের ডাটা","power(x, n), sum of digits","অন্য user-এর রেকর্ডের URL-এ ৪০৪","n"],
+  ["Test","Module 12 Live Class 2","কমপক্ষে ১২টা test (অন্য user ডাটা পায় না, লগইন ছাড়া redirect)","পুনরাবৃত্তি","সব সবুজ · README-তে test চালানোর নিয়ম","n"],
+  ["DRF (১)","Module 13 Live Class 1","Serializer, ViewSet, Router; CRUD API","bubble/selection/insertion sort","GET/POST/PATCH/DELETE সব কাজ করে","n"],
+  ["DRF (২)","Module 13 Live Class 2","JWT, IsOwner, throttle, pagination, filter, /api/v1/, CORS","merge sort","অন্য user-এর token দিয়ে আমার ডাটা পায় না (test)","n"],
+  ["API মান ও Docs","Module 15 Live Class 1","API test; drf-spectacular Swagger; Postman collection; বন্ধু দিয়ে পরীক্ষা","quick sort ও binary search","বন্ধু collection চালাতে পেরেছে","n"],
+  ["Exam Week 1 মক + CV খসড়া","Module 14 (মক টেস্ট)","১.৫ ঘণ্টা মক, AI বন্ধ; ৪৫ মিনিট ফাঁক পূরণ; CV প্রথম খসড়া","—","আটকানো অংশ লগে লেখা আছে","e"],
+  ["Celery, Redis, Cache","Module 15 Live Class 2","Redis (Docker); background email; retry_backoff; Beat; cache","DSA Class 5: Sorting ও Binary search","Task-এ id পাঠিয়েছ · idempotent কেন বলতে পারো","n"],
+  ["Security (১)","Module 16 Live Class 1","ফেলে-দেওয়া app-এ ৩টা ফাঁক (XSS, SQLi, IDOR) বানিয়ে আক্রমণ ও ঠিক করো","binary search variant","প্রতিটা ফাঁক আক্রমণ করে প্রমাণ করেছ","n"],
+  ["Security (২) ও GATE 2","Module 16 Live Class 2","নিজের product audit, ৩টা fix + test, লিখিত রিপোর্ট; GATE 2 স্ব-viva রেকর্ড","পুনরাবৃত্তি","রিপোর্ট আছে · ৩টা fix + test","g"],
+  ["JavaScript + React শুরু","Module 17 Live Class 2 + Module 18 Live Class 1","Vite React; api() wrapper (token refresh); লগইন; loading/error/empty","DSA Class 6: Stack, Queue, Valid parentheses","ব্রাউজার থেকে DRF API-তে লগইন ও ডাটা আনা","n"],
+  ["React পাতা","Module 18 Live Class 2","Router, তালিকা/বিস্তারিত, controlled form, AuthContext, ProtectedRoute","next greater element (monotonic stack)","MVP-র ৩টা কাজই UI দিয়ে করা যায়","n"],
+  ["প্রথম Production Deploy","—","Backend + Frontend deploy, HTTPS, CORS; ৫টা event tracking","queue দিয়ে ছোট সমস্যা","আসল ফোনে সম্পূর্ণ flow চলে","n"],
+  ["Catch-up + ব্যবহারকারী শুরু","—","Deploy শেষ; প্রথম ৩ জনকে লিংক; LinkedIn খসড়া","—","সাপ্তাহিক রিভিউ লেখা হয়েছে","c"],
+  ["Docker","Module 19 Live Class 1","Dockerfile, .dockerignore, docker-compose (web+db+redis+worker)","পুনরাবৃত্তি","ফ্রেশ clone থেকে ৩ কমান্ডে চলে","n"],
+  ["CI/CD, Logging, Incident","Module 19 Live Class 2","GitHub Actions (ruff + pytest); structured logging; নিজের incident ও রিপোর্ট; আরও ৪ জন ব্যবহারকারী (মোট ৭)","পুনরাবৃত্তি","test ভাঙলে merge আটকায় · incident report আছে","n"],
+  ["AI-সহায়ক ইঞ্জিনিয়ারিং","Module 20 পুরো","CLAUDE.md; spec → plan → test-first feature; review note; Bug Hunt","linked list শুরু","Review note আছে · Bug Hunt স্কোরবোর্ড আছে","n"],
+  ["System Design","Module 21 Live Class 1","architecture diagram + scaling plan; প্রতিটা বাক্সের 'ভাঙলে কী হবে'","DSA Class 7: Linked list (reversal, cycle)","Diagram + plan আছে","n"],
+  ["Open-source PR","Module 21 Live Class 2","good first issue বেছে locally চালাও, একটা ছোট PR দাও","—","কমপক্ষে fork + branch + ছোট change","n"],
+  ["AI Feature (১)","Module 23 Live Class 1","LLM API কল; chunk + embedding + pgvector retrieval; 'জানি না' প্রম্পট","tree: inorder/preorder/postorder","ডাটায় নেই এমন প্রশ্নে 'জানি না' বলে","n"],
+  ["Exam Week 2 মক + ব্যবহারকারী ১০","Module 22","১.৫ ঘণ্টা মক (মডিউল ১৫–২১), AI বন্ধ; ফাঁক পূরণ; ব্যবহারকারী মোট ১০ জন","—","১০ জন ব্যবহারকারী · সাপ্তাহিক রিভিউ","e"],
+  ["AI Feature (২)","Module 23 Live Class 2","একটা read-only tool; agent লুপ (৫ ধাপ); prompt injection আক্রমণ; tool call লগ","tree BFS (level order)","Injection আক্রমণ ব্যর্থ হয়","n"],
+  ["Eval (১)","Module 24 Live Class 1","২০টা eval case + স্কোরিং স্ক্রিপ্ট + ৩ বার চালানো","tree DFS: max depth","প্রথম pass rate পেয়েছ","n"],
+  ["Eval (২) ও GATE 3","Module 24 Live Class 2","ব্যর্থ case ঠিক; guardrail + fallback; CI gate; AI feature deploy; GATE 3 রেকর্ড","পুনরাবৃত্তি","AI feature live · eval রিপোর্ট আছে","g"],
+  ["ডাটা পড়ে একটা পরিবর্তন","Module 25 Live Class 2","Funnel; সবচেয়ে বড় ঝরে-পড়া; একটাই পরিবর্তন ship; 'আগে' সংখ্যা সংরক্ষণ","DSA Class 8: Tree interview session","পরিবর্তন লাইভ · 'আগে' সংখ্যা আছে","n"],
+  ["Hardening ও User Report","Module 26 Live Class 1","নিরাপত্তা চেকলিস্ট আবার; error/empty state; First 10 Users Report খসড়া","মিশ্র সমস্যা","সব test সবুজ · রিপোর্টের খসড়া আছে","n"],
+  ["README, Case Study, Demo","—","Hiring-manager README; case study; ২ মিনিটের demo ভিডিও","পুনরাবৃত্তি","অপরিচিত মানুষ ৩ কমান্ডে app চালাতে পারে","n"],
+  ["CV, GitHub, LinkedIn, রিভিউ","—","CV চূড়ান্ত (১ পাতা); GitHub pinned repo ও README; LinkedIn headline/About/Featured","—","সাপ্তাহিক রিভিউ (সপ্তাহ ৭) লেখা হয়েছে","c"],
+  ["ইন্টারভিউ-প্রস্তুতি","Module 26 Live Class 2","code comprehension; live debugging; 'AI কতটুকু লিখেছে?' উত্তর; URL shortener design; mock interview রেকর্ড","—","Mock interview রেকর্ড আছে, ৩টা উন্নতির জায়গা লিখেছ","f"],
+  ["Final Viva ও আবেদন শুরু","—","Final viva (৩০ মি); First 10 Users Report চূড়ান্ত; প্রথম ৫–১০টা আবেদন; রেটিং দ্বিতীয়বার; guideline ও learning-log repo-তে","—","৫০ দিনের শেষ রিভিউ লিখেছ","f"]
+  ];
+  var WEEKS=[[1,6,"সপ্তাহ ১","Python ভিত্তি · Portfolio page, Expense Tracker"],[7,13,"সপ্তাহ ২","Python শেষ + Product Brief · Finance Toolkit, one-page spec"],[14,20,"সপ্তাহ ৩","Web, SQL, Django শুরু · ER diagram, Django project"],[21,27,"সপ্তাহ ৪","Web App, Auth, DRF · Login system, Public REST API"],[28,34,"সপ্তাহ ৫","Celery, Security, React, প্রথম deploy"],[35,41,"সপ্তাহ ৬","Docker, CI/CD, AI-সহায়ক কাজ, System Design"],[42,48,"সপ্তাহ ৭","AI Feature, Eval, ডাটা, Case Study"],[49,50,"সপ্তাহ ৮","ইন্টারভিউ-প্রস্তুতি ও আবেদন"]];
+  var KIND={n:"",c:"Catch-up",g:"GATE",e:"Exam Week",f:"শেষ ধাপ"};
+  var SKILLS=["Python লিখতে পারি (loop, function, class, file, exception)|4","Git/GitHub দৈনিক কাজে ব্যবহার করি|4","SQL ও PostgreSQL (join, index, normalization)|3","Django models + ORM + N+1 চিনি|4","Authentication ও object-level permission|4","REST API (DRF) নিজে ডিজাইন ও নিরাপদ করতে পারি|4","Test লিখি (pytest/Django test)|3","নিরাপত্তা-মৌলিক (XSS, SQLi, CSRF, IDOR, secret)|3","Docker, CI/CD, deploy|3","AI টুল ব্যবহার করি, কিন্তু যাচাই করি|4","অচেনা কোড পড়ে ব্যাখ্যা ও debug করতে পারি|3","DSA (array, hash map, two pointers, stack, tree)|3","নিজের কাজ ব্যাখ্যা করে ইন্টারভিউ দিতে পারি|3"];
+  var FINAL=[["প্রযুক্তি",["Django + DRF + PostgreSQL + React product deployed (live লিংক)","Object-level permission আছে, test দিয়ে প্রমাণিত","১২+ test, CI সবুজ","Celery + Redis দিয়ে async email, একটা cache","Security audit রিপোর্ট + ৩+ fix","Docker compose-এ চলে, CI/CD কাজ করে","AI feature: retrieval, safe tool, ২০ case eval, fallback, খরচ লগ","README, architecture diagram, scaling plan"]],["ব্যবহারকারী",["১০ জন আসল ব্যবহারকারী","Funnel রিপোর্ট, ১টা পরিবর্তন ship ও আগে-পরে মাপা","First 10 Users Report (সীমা সৎভাবে লেখা)"]],["DSA ও ইন্টারভিউ",["~৪০+ সহজ সমস্যা সমাধান (নিজে)","Mock interview একবার রেকর্ড করে দেখা","'এর কতটুকু AI লিখেছে?' ৩০ সেকেন্ডের সৎ উত্তর","অচেনা কোড ব্যাখ্যা ও live debugging অনুশীলন"]],["ক্যারিয়ার",["Case study, ২ মিনিটের demo ভিডিও","CV, GitHub pinned repo, LinkedIn Featured","প্রথম ৫–১০টা আবেদন/referral অনুরোধ","দক্ষতার রেটিং ১ নভেম্বর বনাম ২০ ডিসেম্বর"]]];
+  var SUB=[["পড়া","r"],["বানানো","b"],["DSA","d"],["commit ও লগ","l"]];
+  var KEY="suaib-50day-v1";
+  var S={days:{},rate:{},fin:{},open:{}};
+  try{var raw=localStorage.getItem(KEY);if(raw){var p=JSON.parse(raw);if(p&&typeof p==="object")S=Object.assign(S,p)}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+  var CHECK='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  function $(id){return document.getElementById(id)}
+  function dateOf(n){var d=new Date(START);d.setDate(d.getDate()+n-1);return d}
+  function midnight(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
+  function todayNo(){var t=midnight(new Date());return Math.round((t-START)/864e5)+1}
+  function isDone(n){return !!(S.days[n]&&S.days[n].done)}
+  function fmtDate(n){var d=dateOf(n);return d.getDate()+" "+MON[d.getMonth()]+", "+WD[d.getDay()]}
+  var filter="all";
+
+  function render(){
+    var tn=todayNo(), html="";
+    WEEKS.forEach(function(w,wi){
+      var cnt=0,tot=w[1]-w[0]+1,rows="";
+      for(var n=w[0];n<=w[1];n++){
+        var d=D[n-1],done=isDone(n);if(done)cnt++;
+        if(filter==="todo"&&done)continue;
+        if(filter==="done"&&!done)continue;
+        var open=!!S.open[n],sd=(S.days[n]&&S.days[n].s)||{};
+        var tags="";
+        if(KIND[d[5]])tags+='<span class="tag '+(d[5]==="g"?"gate":d[5]==="e"?"exam":d[5]==="f"?"final":"catch")+'">'+KIND[d[5]]+'</span>';
+        if(n===tn)tags+='<span class="tag now">আজ</span>';
+        else if(n<tn&&!done)tags+='<span class="tag late">পিছিয়ে</span>';
+        if(done)tags+='<span class="tag ok">শেষ</span>';
+        var det='';
+        var vals=[d[1],d[2],d[3],"আজকের learning-log লেখা ও git commit"];
+        SUB.forEach(function(s,i){
+          if(vals[i]==="—")return;
+          det+='<div class="sub"><button class="chk sm" role="checkbox" aria-checked="'+(!!sd[s[1]])+'" aria-label="'+s[0]+'" data-sub="'+n+':'+s[1]+'">'+CHECK+'</button><div><span class="lbl">'+s[0]+'</span><span class="txt">'+vals[i]+'</span></div></div>';
+        });
+        det+='<div class="target">শেষ বলবে যখন: '+d[4]+'</div>';
+        rows+='<div class="day'+(done?' done':'')+(n===tn?' today':'')+'" id="day'+n+'">'+
+          '<div class="row"><button class="chk" role="checkbox" aria-checked="'+done+'" aria-label="Day '+n+' শেষ" data-day="'+n+'">'+CHECK+'</button>'+
+          '<button class="main" data-open="'+n+'" aria-expanded="'+open+'"><span class="dline"><span class="dn">DAY '+(n<10?"0":"")+n+'</span><span class="dt">'+d[0]+'</span></span><span class="dd">'+fmtDate(n)+'</span></button>'+
+          '<div class="tags">'+tags+'</div></div>'+
+          '<div class="detail"'+(open?'':' hidden')+'>'+det+'</div></div>';
+      }
+      var wOpen=S.open["w"+wi];
+      if(wOpen===undefined)wOpen=(tn>=w[0]&&tn<=w[1])||(tn<1&&wi===0)||(tn>50&&wi===7);
+      if(!rows&&filter!=="all")return;
+      html+='<details class="week" data-w="'+wi+'"'+(wOpen?' open':'')+'><summary><div class="wt">'+w[2]+' · '+dateOf(w[0]).getDate()+'–'+dateOf(w[1]).getDate()+' '+MON[dateOf(w[1]).getMonth()]+'<small>'+w[3]+'</small></div><div class="wp">'+cnt+' / '+tot+'</div><div class="bar"><i style="width:'+(cnt/tot*100)+'%"></i></div></summary><div class="days">'+rows+'</div></details>';
+    });
+    $("weeks").innerHTML=html||'<p class="note">এই ফিল্টারে কিছু নেই।</p>';
+    stats();renderSkills();renderFinal();
+  }
+  function stats(){
+    var tn=todayNo(),done=0,behind=0,streak=0;
+    for(var n=1;n<=50;n++){if(isDone(n))done++;else if(n<tn)behind++}
+    var top=Math.min(tn,50);
+    // streak: consecutive done days ending at today (or yesterday if today not yet done)
+    var e=top;if(e>=1&&!isDone(e)&&e===tn)e--;
+    if(tn>50)e=50;
+    for(var k=e;k>=1&&isDone(k);k--)streak++;
+    var pct=Math.round(done/50*100);
+    $("sDone").textContent=done;$("sHours").textContent=done*4;$("sStreak").textContent=streak;$("sBehind").textContent=behind;
+    $("sLeft").textContent=tn<1?50:Math.max(0,50-tn+(isDone(tn)?0:1)-0);
+    $("sLeft").textContent=tn<1?50:tn>50?0:50-tn+1;
+    $("ringPct").textContent=pct+"%";$("ringSub").textContent=done+" / 50";
+    $("ringArc").setAttribute("stroke-dashoffset",(263.9*(1-done/50)).toFixed(1));
+    var fc=0,ft=0;FINAL.forEach(function(g,gi){g[1].forEach(function(_,i){ft++;if(S.fin[gi+"-"+i])fc++})});
+    $("finalNote").textContent="২০ ডিসেম্বরের মধ্যে সব টিক দেওয়ার লক্ষ্য · "+fc+" / "+ft+" শেষ";
+  }
+  function renderSkills(){
+    var h='<tr><th>দক্ষতা</th><th class="c">১ নভেম্বর</th><th class="c">২০ ডিসেম্বর</th><th class="c">লক্ষ্য</th></tr>';
+    SKILLS.forEach(function(s,i){
+      var p=s.split("|"),r=S.rate[i]||{};
+      function sel(w){var o='<select id="r'+w+i+'" data-rate="'+i+':'+w+'" aria-label="'+p[0]+'"><option value="">–</option>';for(var v=1;v<=5;v++)o+='<option value="'+v+'"'+(String(r[w])===String(v)?' selected':'')+'>'+v+'</option>';return o+'</select>'}
+      h+='<tr><td>'+p[0]+'</td><td class="c">'+sel("a")+'</td><td class="c">'+sel("b")+'</td><td class="c mono">'+p[1]+'</td></tr>';
+    });
+    $("skillTable").innerHTML=h;
+  }
+  function renderFinal(){
+    var h="";
+    FINAL.forEach(function(g,gi){
+      h+='<div class="panel grp"><h3>'+g[0]+'</h3>';
+      g[1].forEach(function(t,i){var on=!!S.fin[gi+"-"+i];
+        h+='<div class="li"><button class="chk sm" role="checkbox" aria-checked="'+on+'" aria-label="'+t.replace(/"/g,'')+'" data-fin="'+gi+'-'+i+'">'+CHECK+'</button><span>'+t+'</span></div>'});
+      h+='</div>';
+    });
+    $("finalGroups").innerHTML=h;
+  }
+  document.addEventListener("click",function(ev){
+    var t=ev.target.closest("[data-day],[data-sub],[data-open],[data-fin],[data-f],[data-tab],#goToday");if(!t)return;
+    if(t.dataset.day){var n=+t.dataset.day;S.days[n]=S.days[n]||{s:{}};S.days[n].done=!S.days[n].done;save();render();return}
+    if(t.dataset.sub){var q=t.dataset.sub.split(":"),n2=+q[0];S.days[n2]=S.days[n2]||{s:{}};S.days[n2].s=S.days[n2].s||{};S.days[n2].s[q[1]]=!S.days[n2].s[q[1]];save();render();return}
+    if(t.dataset.open){var o=+t.dataset.open;S.open[o]=!S.open[o];save();render();return}
+    if(t.dataset.fin){S.fin[t.dataset.fin]=!S.fin[t.dataset.fin];save();renderFinal();stats();return}
+    if(t.dataset.f){filter=t.dataset.f;document.querySelectorAll("[data-f]").forEach(function(b){b.setAttribute("aria-pressed",b===t)});render();return}
+    if(t.dataset.tab){["days","skills","final"].forEach(function(k){var on=k===t.dataset.tab;$("t-"+k).setAttribute("aria-selected",on);var p=$("p-"+k);p.hidden=!on;p.style.display=on?"flex":"none"})}
+    if(t.id==="goToday"){var tn=Math.min(Math.max(todayNo(),1),50);filter="all";document.querySelectorAll("[data-f]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.f==="all")});
+      WEEKS.forEach(function(w,wi){if(tn>=w[0]&&tn<=w[1])S.open["w"+wi]=true});S.open[tn]=true;save();render();var el=$("day"+tn);if(el)el.scrollIntoView({block:"center"})}
+  });
+  document.addEventListener("toggle",function(ev){var d=ev.target;if(d.dataset&&d.dataset.w!==undefined){S.open["w"+d.dataset.w]=d.open;save()}},true);
+  document.addEventListener("change",function(ev){var t=ev.target;if(t.dataset&&t.dataset.rate){var q=t.dataset.rate.split(":");S.rate[q[0]]=S.rate[q[0]]||{};S.rate[q[0]][q[1]]=t.value;save()}});
+  render();
+})();
+</script>
+</body>
+</html>
