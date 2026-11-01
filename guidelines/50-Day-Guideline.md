@@ -37,7 +37,7 @@
 
 | দক্ষতা | ১ নভেম্বর | ২০ ডিসেম্বর | লক্ষ্য |
 |---|---|---|---|
-| Python লিখতে পারি (loop, function, class, file, exception) | | | ৪ |
+| Python লিখতে পারি (loop, function, class, file, exception) | 1| | ৪ |
 | Git/GitHub দৈনিক কাজে ব্যবহার করি | | | ৪ |
 | SQL ও PostgreSQL (join, index, normalization) | | | ৩ |
 | Django models + ORM + N+1 চিনি | | | ৪ |
