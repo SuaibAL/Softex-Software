@@ -151,11 +151,11 @@ flowchart LR
 
 ## ⭐ প্রজেক্ট: Personal Portfolio Page
 
-- [ ] নিজের নাম, পরিচয়, ছবি আছে
-- [ ] অন্তত ২টা লিংক (GitHub / LinkedIn)
-- [ ] GitHub-এ push করা
-- [ ] GitHub Pages-এ live URL কাজ করছে
-- [ ] কমপক্ষে ৩টা অর্থবহ commit message
+- [done ] নিজের নাম, পরিচয়, ছবি আছে
+- [done ] অন্তত ২টা লিংক (GitHub / LinkedIn)
+- [done ] GitHub-এ push করা
+- [done ] GitHub Pages-এ live URL কাজ করছে
+- [done ] কমপক্ষে ৩টা অর্থবহ commit message
 
 ## 🎤 Interview প্রশ্ন
 
