@@ -64,10 +64,10 @@ print("তুমি থাকো", city)
 
 ## ⭐ প্রজেক্ট / চেকলিস্ট
 
-- [ ] Python ও VS Code install হয়েছে
-- [ ] `python --version` কাজ করছে
-- [ ] একটা `hello.py` চালিয়েছি
-- [ ] নিজের নাম, বয়স input নিয়ে একটা বাক্য print করেছি
+- [done ] Python ও VS Code install হয়েছে
+- [ done] `python --version` কাজ করছে
+- [done ] একটা `hello.py` চালিয়েছি
+- [done ] নিজের নাম, বয়স input নিয়ে একটা বাক্য print করেছি
 
 ## 🎤 নিজেকে যাচাই
 
